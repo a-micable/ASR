@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "whisper-finetune-pipeline"
+version = "1.0.0"
+description = "Production-ready Whisper fine-tuning pipeline for low-resource languages"
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --cov=preprocessing --cov=training --cov=evaluation --cov=api --cov=logging_config --cov-report=term-missing --cov-fail-under=85"
+
+[tool.coverage.run]
+source = ["preprocessing", "training", "evaluation", "api", "logging_config.py"]
+omit = ["tests/*", "notebooks/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]

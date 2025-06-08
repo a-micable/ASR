@@ -1,0 +1,46 @@
+model:
+  name: openai/whisper-small
+  language: am
+  task: transcribe
+  freeze_encoder: false
+
+dataset:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  augmented_dir: data/augmented
+  hf_dataset_path: data/processed/hf_dataset
+  transcription_file: data/raw/transcriptions.csv
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  sample_rate: 16000
+
+training:
+  output_dir: checkpoints
+  num_train_epochs: 10
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 2
+  learning_rate: 1.0e-5
+  warmup_steps: 500
+  fp16: true
+  early_stopping_patience: 3
+  logging_steps: 25
+  eval_steps: 250
+  save_steps: 500
+
+scheduler:
+  scheduler_type: cosine_with_warmup
+  num_warmup_steps: 500
+
+logging:
+  level: INFO
+  log_dir: logs
+  structured: true
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  model_path: checkpoints/best
+  rate_limit: 60/minute
+  default_language: am
