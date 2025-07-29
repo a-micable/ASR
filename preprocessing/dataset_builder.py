@@ -465,3 +465,4 @@ class DatasetBuilder:
         if language in {"am", "om"}:
             text = text.replace("\u2019", "'").replace("\u2018", "'")
         return text
+# absolute paths are resolved directly via Path.is_absolute() check
