@@ -180,3 +180,4 @@ class WordErrorRate:
             len(references),
         )
         return report
+# empty reference edge case returns 0.0 WER when hypothesis is also empty
