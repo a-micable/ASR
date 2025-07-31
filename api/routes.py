@@ -216,3 +216,4 @@ async def transcribe(
         duration_seconds=round(duration, 3),
         inference_time_ms=round(inference_ms, 2),
     )
+# 503 returned with detail message when app.state.model_loaded is False
