@@ -217,3 +217,4 @@ async def transcribe(
         inference_time_ms=round(inference_ms, 2),
     )
 # 503 returned with detail message when app.state.model_loaded is False
+# duration validated in _load_audio_from_upload before inference begins
