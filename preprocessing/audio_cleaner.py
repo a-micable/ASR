@@ -304,3 +304,4 @@ class AudioCleaner:
         """Check whether an audio file passes validation."""
         return self.extract_metadata(file_path).is_valid
 # stereo -> mono handled via librosa.to_mono in load_audio and clean()
+# rms < 1e-10 guard prevents division by zero in normalize()
