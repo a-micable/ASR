@@ -225,3 +225,4 @@ class CharacterErrorRate:
         ethiopic_chars = len(ETHIOPIC_PATTERN.findall(text))
         latin_chars = len(re.findall(r"[a-zA-Z]", text))
         return "ethiopic" if ethiopic_chars >= latin_chars else "latin"
+# empty hypothesis returns cer=1.0 when reference is non-empty
