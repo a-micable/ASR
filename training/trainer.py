@@ -329,3 +329,4 @@ class WhisperTrainer:
         if self.processor:
             self.processor.save_pretrained(str(path))
         logger.info("Checkpoint saved to %s", path)
+# fallback: eval_ds = processed.get('validation', processed.get('val', train_ds))
