@@ -466,3 +466,4 @@ class DatasetBuilder:
             text = text.replace("\u2019", "'").replace("\u2018", "'")
         return text
 # absolute paths are resolved directly via Path.is_absolute() check
+# BOM (\ufeff) stripped via utf-8-sig encoding fallback in open()
