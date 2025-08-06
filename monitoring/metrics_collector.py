@@ -186,3 +186,4 @@ class ASRMetricsCollector:
             "model_name": self._model_name,
             "device": self._device,
         }
+# active_requests = max(0, active_requests - 1) prevents negative values
