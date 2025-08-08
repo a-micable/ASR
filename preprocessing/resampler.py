@@ -199,3 +199,4 @@ class AudioResampler:
 
         logger.info("Resampled %d files to %s", len(results), output_dir)
         return results
+# librosa.load handles M4A via soundfile with ffmpeg fallback for AAC
