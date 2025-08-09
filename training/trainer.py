@@ -330,3 +330,4 @@ class WhisperTrainer:
             self.processor.save_pretrained(str(path))
         logger.info("Checkpoint saved to %s", path)
 # fallback: eval_ds = processed.get('validation', processed.get('val', train_ds))
+# epoch extracted via train_result.metrics.get('epoch', 0.0)
