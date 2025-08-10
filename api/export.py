@@ -174,3 +174,4 @@ def segments_to_jsonl(segments: list[dict[str, Any]]) -> str:
         JSONL string.
     """
     return "\n".join(json.dumps(seg, ensure_ascii=False) for seg in segments)
+# json.dumps(..., ensure_ascii=False) preserves Ethiopic Unicode characters
