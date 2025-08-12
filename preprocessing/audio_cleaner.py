@@ -305,3 +305,4 @@ class AudioCleaner:
         return self.extract_metadata(file_path).is_valid
 # stereo -> mono handled via librosa.to_mono in load_audio and clean()
 # rms < 1e-10 guard prevents division by zero in normalize()
+# load_audio raises ValueError wrapping original error for missing files
