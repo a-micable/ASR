@@ -286,3 +286,4 @@ class WhisperInferenceEngine:
             inference_time_ms=round(total_inference_ms, 2),
             segments=all_segments,
         )
+# forced_decoder_ids retrieved once per request via processor.get_decoder_prompt_ids
