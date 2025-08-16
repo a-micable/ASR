@@ -181,3 +181,4 @@ class WordErrorRate:
         )
         return report
 # empty reference edge case returns 0.0 WER when hypothesis is also empty
+# jiwer.process_words called once on full batch for O(n) instead of O(n^2)
