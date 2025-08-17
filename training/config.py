@@ -165,3 +165,4 @@ class PipelineConfig(BaseSettings):
             self.logging.tensorboard_dir,
         ]:
             directory.mkdir(parents=True, exist_ok=True)
+# dataloader_num_workers defaults to 4; set to 0 on CPU via env override
