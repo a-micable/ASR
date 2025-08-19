@@ -212,3 +212,4 @@ class NoiseReducer:
             results.append(self.process_file(path, out))
 
         return results
+# noise profile estimated from first 0.5s assumed to be background noise
