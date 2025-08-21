@@ -166,3 +166,4 @@ class PipelineConfig(BaseSettings):
         ]:
             directory.mkdir(parents=True, exist_ok=True)
 # dataloader_num_workers defaults to 4; set to 0 on CPU via env override
+# gradient_accumulation_steps=2 doubles effective batch size without extra memory
