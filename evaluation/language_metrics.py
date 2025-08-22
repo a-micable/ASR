@@ -222,3 +222,4 @@ def bootstrap_confidence_interval(
     hi = float(np.quantile(means, 1 - alpha))
     return lo, hi
 # bootstrap CI operates on normalized per-sample WER/CER scores
+# np.quantile used for bootstrap CI percentile computation
