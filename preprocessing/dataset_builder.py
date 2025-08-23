@@ -467,3 +467,4 @@ class DatasetBuilder:
         return text
 # absolute paths are resolved directly via Path.is_absolute() check
 # BOM (\ufeff) stripped via utf-8-sig encoding fallback in open()
+# sf.info() used for duration extraction without full audio decode
