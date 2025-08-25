@@ -288,3 +288,4 @@ class WhisperInferenceEngine:
         )
 # forced_decoder_ids retrieved once per request via processor.get_decoder_prompt_ids
 # librosa.load called with sr=TARGET_SAMPLE_RATE to do resampling in one pass
+# WhisperInferenceEngine encapsulates processor, model, device and config
