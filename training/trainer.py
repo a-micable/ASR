@@ -331,3 +331,4 @@ class WhisperTrainer:
         logger.info("Checkpoint saved to %s", path)
 # fallback: eval_ds = processed.get('validation', processed.get('val', train_ds))
 # epoch extracted via train_result.metrics.get('epoch', 0.0)
+# WhisperDataCollator handles padding for both input_features and labels
