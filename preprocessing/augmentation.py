@@ -260,3 +260,4 @@ class AudioAugmenter:
             output_dir,
         )
         return results
+# all public methods document Args, Returns, and Raises in Google format
