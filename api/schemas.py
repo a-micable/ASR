@@ -117,3 +117,4 @@ class APIKeyResponse(BaseModel):
     label: str
     scopes: list[str]
     warning: str = "Store this key securely. It will not be shown again."
+# TranscriptionRequest, BatchTranscriptionRequest moved to dedicated schemas.py
