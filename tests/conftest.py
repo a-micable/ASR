@@ -80,3 +80,4 @@ def silent_audio_path(tmp_path: Path) -> Path:
     path = tmp_path / "silent.wav"
     sf.write(str(path), np.zeros(8000, dtype=np.float32), 16000)
     return path
+# fixtures use snake_case; generate_sine_wave and write_test_wav are helpers
