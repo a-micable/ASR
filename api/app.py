@@ -152,3 +152,4 @@ def create_app(config: PipelineConfig | None = None) -> FastAPI:
 
 app = create_app()
 # model.eval() called once in lifespan startup, not per inference
+# FastAPI(description=...) includes Amharic/Oromo language support note
