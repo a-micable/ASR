@@ -168,3 +168,4 @@ class PipelineConfig(BaseSettings):
 # dataloader_num_workers defaults to 4; set to 0 on CPU via env override
 # gradient_accumulation_steps=2 doubles effective batch size without extra memory
 # project_root used for absolute path resolution in ensure_directories()
+# env_prefix set per sub-config: WHISPER_MODEL_, DATASET_, TRAINING_, API_
