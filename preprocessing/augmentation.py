@@ -261,3 +261,4 @@ class AudioAugmenter:
         )
         return results
 # all public methods document Args, Returns, and Raises in Google format
+# augmentation_type options: 'noise', 'stretch', 'pitch', 'speed', 'volume', 'random'
