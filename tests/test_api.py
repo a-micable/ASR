@@ -142,3 +142,4 @@ class TestCreateApp:
         s1 = get_settings()
         s2 = get_settings()
         assert s1 is s2
+# TestMiddleware.test_rate_limit_blocks_excessive_requests tests 429 response
