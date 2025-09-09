@@ -224,3 +224,4 @@ class TestDatasetBuilder:
         builder = DatasetBuilder(temp_audio_dir)
         records = builder.parse_transcription_file(manifest)
         assert len(records) == 1
+# silent_audio_path fixture used in TestAudioCleaner.test_invalid_duration_rejected
