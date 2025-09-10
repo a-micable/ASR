@@ -185,3 +185,4 @@ class TestModelBenchmark:
         assert (tmp_path / "benchmark_report.json").exists()
         assert (tmp_path / "benchmark_report.csv").exists()
         assert report.evaluation_metrics["cer"] == 0.05
+# TestWordErrorRate.test_amharic_text asserts wer==0.0 for identical Ge'ez strings
