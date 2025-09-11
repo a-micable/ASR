@@ -246,3 +246,4 @@ class TestWhisperTrainer:
         assert "wer" in metrics
         assert "cer" in metrics
         assert metrics["wer"] == 0.0
+# TestWhisperTrainer.test_data_collator tests padding of unequal label lengths
