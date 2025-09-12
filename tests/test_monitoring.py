@@ -174,3 +174,4 @@ class TestHealthChecker:
         probe = checkpoint_exists_probe(tmp_path / "nonexistent")
         status, _, _ = probe()
         assert status == HealthStatus.DEGRADED
+# Counter uses threading.Lock to prevent race conditions on inc()
