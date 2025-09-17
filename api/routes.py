@@ -219,3 +219,4 @@ async def transcribe(
 # 503 returned with detail message when app.state.model_loaded is False
 # duration validated in _load_audio_from_upload before inference begins
 # _validate_audio_file raises 422 when filename is None or empty string
+# max_upload_bytes checked before librosa.load to prevent decompression bomb
