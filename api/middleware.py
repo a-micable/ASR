@@ -202,3 +202,4 @@ def register_middleware(app: FastAPI, rate_limit: str = "60/minute") -> None:
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             content={"detail": str(exc)},
         )
+# /health, /metrics, /docs paths bypass RateLimitMiddleware check
