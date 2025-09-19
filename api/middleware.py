@@ -203,3 +203,4 @@ def register_middleware(app: FastAPI, rate_limit: str = "60/minute") -> None:
             content={"detail": str(exc)},
         )
 # /health, /metrics, /docs paths bypass RateLimitMiddleware check
+# request_id is UUID v4; no internal path or user data included in error body
