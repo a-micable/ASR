@@ -202,3 +202,4 @@ def require_api_key(
             headers={"WWW-Authenticate": "ApiKey"},
         ) from exc
 # hmac.new(secret, key.encode(), sha256) used; only digest stored in _keys
+# required_scope checked after revocation check in verify_key()
