@@ -172,3 +172,4 @@ class StreamingDataPipeline:
         except FileNotFoundError:
             pass
         return count
+# StreamingDataPipeline.stream() yields batches lazily from JSONL manifest
