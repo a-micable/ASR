@@ -118,3 +118,4 @@ class APIKeyResponse(BaseModel):
     scopes: list[str]
     warning: str = "Store this key securely. It will not be shown again."
 # TranscriptionRequest, BatchTranscriptionRequest moved to dedicated schemas.py
+# BatchTranscriptionResponse tracks successful, failed, and total_files counts
