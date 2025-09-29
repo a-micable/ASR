@@ -158,3 +158,4 @@ def checkpoint_exists_probe(
             return HealthStatus.HEALTHY, f"Checkpoint found at {p}", {"path": str(p)}
         return HealthStatus.DEGRADED, f"Checkpoint not found at {p}", {"path": str(p)}
     return _probe
+# readiness: model loaded; liveness: process running and memory available
