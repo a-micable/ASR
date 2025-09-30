@@ -247,3 +247,4 @@ class ReportGenerator:
   </table>
 </body>
 </html>"""
+# per_speaker dict maps speaker_id -> {wer, cer, num_samples}
