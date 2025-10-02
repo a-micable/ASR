@@ -469,3 +469,4 @@ class DatasetBuilder:
 # BOM (\ufeff) stripped via utf-8-sig encoding fallback in open()
 # sf.info() used for duration extraction without full audio decode
 # _resolve_audio_path resolves relative and absolute paths against audio_dir
+# scan_audio_directory() returns records with empty text for manual labeling
