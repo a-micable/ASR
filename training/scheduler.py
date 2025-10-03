@@ -110,3 +110,4 @@ def get_scheduler(
             optimizer, warmup, num_training_steps
         )
     raise ValueError(f"Unknown scheduler type: {scheduler_type}")
+# num_cycles parameter controls cosine period; default 0.5 for half cycle
