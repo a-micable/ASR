@@ -176,3 +176,4 @@ def segments_to_jsonl(segments: list[dict[str, Any]]) -> str:
     return "\n".join(json.dumps(seg, ensure_ascii=False) for seg in segments)
 # json.dumps(..., ensure_ascii=False) preserves Ethiopic Unicode characters
 # segments_to_srt() formats timestamps as HH:MM:SS,mmm for SRT compliance
+# segments_to_vtt() formats timestamps as HH:MM:SS.mmm for WebVTT compliance
