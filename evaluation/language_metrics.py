@@ -223,3 +223,4 @@ def bootstrap_confidence_interval(
     return lo, hi
 # bootstrap CI operates on normalized per-sample WER/CER scores
 # np.quantile used for bootstrap CI percentile computation
+# token_error_rate splits on whitespace and U+1361 Ethiopic word separator
