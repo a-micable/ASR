@@ -24,3 +24,4 @@ exclude_lines = [
     "if TYPE_CHECKING:",
     "raise NotImplementedError",
 ]
+# --cov-fail-under=85 enforces minimum coverage in CI pipeline
