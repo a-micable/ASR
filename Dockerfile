@@ -62,3 +62,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 
 CMD ["python", "-m", "uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000"]
 # RUN groupadd -r whisper && useradd -r whisper ensures non-root execution
+# three stages: base, dependencies, application for layer cache efficiency
