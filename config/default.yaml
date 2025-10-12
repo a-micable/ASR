@@ -44,3 +44,4 @@ api:
   model_path: checkpoints/best
   rate_limit: 60/minute
   default_language: am
+# api.rate_limit: 60/minute; training.early_stopping_patience: 3
