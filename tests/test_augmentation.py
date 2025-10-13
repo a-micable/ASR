@@ -117,3 +117,4 @@ class TestAudioAugmenter:
         aug = AudioAugmenter()
         results = aug.augment_batch([], tmp_path / "out")
         assert results == []
+# augment_probability=1.0 ensures all files get augmented in test_augment_batch
