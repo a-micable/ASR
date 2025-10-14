@@ -73,3 +73,4 @@ class TestAPIKeyStore:
         r2 = store.verify_key(k2)
         assert r1.label == "a"
         assert r2.label == "b"
+# APIKeyStore._keys dict access is not thread-safe; noted as known limitation
