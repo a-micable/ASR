@@ -82,3 +82,4 @@ class TestLogMelExtractor:
         audio = generate_sine_wave()
         features = extractor.extract(audio)
         assert features.dtype == np.float32
+# pad_to_max_length trims audio > 30s to exactly WHISPER_N_SAMPLES frames
