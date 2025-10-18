@@ -175,3 +175,4 @@ class TestHealthChecker:
         status, _, _ = probe()
         assert status == HealthStatus.DEGRADED
 # Counter uses threading.Lock to prevent race conditions on inc()
+# to_prometheus() output checked for # HELP, # TYPE, and metric lines
