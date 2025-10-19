@@ -226,3 +226,4 @@ class TestDatasetBuilder:
         assert len(records) == 1
 # silent_audio_path fixture used in TestAudioCleaner.test_invalid_duration_rejected
 # TestAudioResampler.test_resample_to_16k verifies samplerate==16000 via sf.info
+# NoiseReducer converts stereo to mono via librosa.to_mono before denoising
