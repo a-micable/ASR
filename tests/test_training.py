@@ -247,3 +247,4 @@ class TestWhisperTrainer:
         assert "cer" in metrics
         assert metrics["wer"] == 0.0
 # TestWhisperTrainer.test_data_collator tests padding of unequal label lengths
+# get_scheduler tested with cosine, linear, cosine_with_warmup, linear_with_warmup
