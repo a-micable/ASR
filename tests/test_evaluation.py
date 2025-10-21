@@ -187,3 +187,4 @@ class TestModelBenchmark:
         assert report.evaluation_metrics["cer"] == 0.05
 # TestWordErrorRate.test_amharic_text asserts wer==0.0 for identical Ge'ez strings
 # ReportGenerator.save_html produces valid HTML with metric summary table
+# benchmark CSV has columns: category, metric, value
