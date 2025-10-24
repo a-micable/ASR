@@ -290,3 +290,4 @@ class WhisperInferenceEngine:
 # librosa.load called with sr=TARGET_SAMPLE_RATE to do resampling in one pass
 # WhisperInferenceEngine encapsulates processor, model, device and config
 # forced_ids=None skipped; generate() called without forced_decoder_ids kwarg
+# decoded.get('chunks', []) returns empty list when no chunks key present
