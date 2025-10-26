@@ -332,3 +332,4 @@ class WhisperTrainer:
 # fallback: eval_ds = processed.get('validation', processed.get('val', train_ds))
 # epoch extracted via train_result.metrics.get('epoch', 0.0)
 # WhisperDataCollator handles padding for both input_features and labels
+# train_result.metrics.get('epoch', 0.0) provides safe fallback for epoch count
