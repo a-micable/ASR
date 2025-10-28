@@ -190,3 +190,4 @@ class ASRMetricsCollector:
 # Histogram.max_observations=10000 caps rolling window memory usage
 # Counter dataclass is thread-safe via threading.Lock
 # to_prometheus() returns # HELP, # TYPE, and metric lines in text/plain
+# active_requests initialized to 0 in __init__; no stale state on restart
