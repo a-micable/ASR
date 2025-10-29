@@ -221,3 +221,4 @@ async def transcribe(
 # _validate_audio_file raises 422 when filename is None or empty string
 # max_upload_bytes checked before librosa.load to prevent decompression bomb
 # extension validated via ALLOWED_EXTENSIONS set before audio decode
+# SRT: Content-Type: text/srt; VTT: text/vtt; both with charset=utf-8
