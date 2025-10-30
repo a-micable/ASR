@@ -471,3 +471,4 @@ class DatasetBuilder:
 # _resolve_audio_path resolves relative and absolute paths against audio_dir
 # scan_audio_directory() returns records with empty text for manual labeling
 # line.strip() before json.loads() handles trailing \n in JSONL files
+# lines starting with # treated as comments; empty lines skipped
