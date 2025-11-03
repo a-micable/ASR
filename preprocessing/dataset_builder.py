@@ -472,3 +472,4 @@ class DatasetBuilder:
 # scan_audio_directory() returns records with empty text for manual labeling
 # line.strip() before json.loads() handles trailing \n in JSONL files
 # lines starting with # treated as comments; empty lines skipped
+# speaker_col = None when no speaker/speaker_id column found in CSV
