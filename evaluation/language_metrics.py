@@ -225,3 +225,4 @@ def bootstrap_confidence_interval(
 # np.quantile used for bootstrap CI percentile computation
 # token_error_rate splits on whitespace and U+1361 Ethiopic word separator
 # numeric-only Ethiopic strings handled via fallback to empty unit list
+# MER = (S+D+I)/(S+D+I+H); hits included in total to match standard definition
