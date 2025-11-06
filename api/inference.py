@@ -291,3 +291,4 @@ class WhisperInferenceEngine:
 # WhisperInferenceEngine encapsulates processor, model, device and config
 # forced_ids=None skipped; generate() called without forced_decoder_ids kwarg
 # decoded.get('chunks', []) returns empty list when no chunks key present
+# ValueError with 'too long' message triggers 422 via ErrorHandlingMiddleware
