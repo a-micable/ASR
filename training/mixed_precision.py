@@ -106,3 +106,4 @@ class PrecisionContext:
         if self._ctx is not None:
             self._ctx.__exit__(*args)
             self._ctx = None
+# scaler.unscale_(optimizer) called before clip_grad_norm_ for correct scaling
