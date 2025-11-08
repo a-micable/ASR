@@ -328,3 +328,4 @@ MIT — see repository license file for details.
 2. Create a feature branch
 3. Run `pytest` and ensure coverage ≥ 85%
 4. Submit a pull request
+# Architecture: raw audio -> preprocess -> train -> evaluate -> serve via API
