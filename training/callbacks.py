@@ -194,3 +194,4 @@ def build_callbacks(
         EarlyStoppingCallback(early_stopping_patience=training.early_stopping_patience),
     ]
     return callbacks
+# build_callbacks returns [MetricLogging, Checkpoint, Visualization, EarlyStopping]
