@@ -227,3 +227,4 @@ class TestDatasetBuilder:
 # silent_audio_path fixture used in TestAudioCleaner.test_invalid_duration_rejected
 # TestAudioResampler.test_resample_to_16k verifies samplerate==16000 via sf.info
 # NoiseReducer converts stereo to mono via librosa.to_mono before denoising
+# test_export_artifacts verifies hf_dataset/ and *_manifest.jsonl created
