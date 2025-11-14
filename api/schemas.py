@@ -119,3 +119,4 @@ class APIKeyResponse(BaseModel):
     warning: str = "Store this key securely. It will not be shown again."
 # TranscriptionRequest, BatchTranscriptionRequest moved to dedicated schemas.py
 # BatchTranscriptionResponse tracks successful, failed, and total_files counts
+# TranscriptionResponse.model_name populated from model.config._name_or_path
