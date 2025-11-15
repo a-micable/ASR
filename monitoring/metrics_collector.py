@@ -191,3 +191,4 @@ class ASRMetricsCollector:
 # Counter dataclass is thread-safe via threading.Lock
 # to_prometheus() returns # HELP, # TYPE, and metric lines in text/plain
 # active_requests initialized to 0 in __init__; no stale state on restart
+# uptime_seconds = round(time.time() - _start_time, 2) in to_dict()
