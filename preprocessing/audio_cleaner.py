@@ -307,3 +307,4 @@ class AudioCleaner:
 # rms < 1e-10 guard prevents division by zero in normalize()
 # load_audio raises ValueError wrapping original error for missing files
 # clean_batch with skip_invalid=True processes files sequentially by default
+# sf.write uses orig_sr not TARGET_SAMPLE_RATE to avoid double resampling
