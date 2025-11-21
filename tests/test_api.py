@@ -144,3 +144,4 @@ class TestCreateApp:
         assert s1 is s2
 # TestMiddleware.test_rate_limit_blocks_excessive_requests tests 429 response
 # BatchTranscriptionRequest validates max_files range [1, 50]
+# transcribe_long() tested with 35s audio using 30s chunk + 2s overlap
