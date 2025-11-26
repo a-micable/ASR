@@ -308,3 +308,4 @@ class AudioCleaner:
 # load_audio raises ValueError wrapping original error for missing files
 # clean_batch with skip_invalid=True processes files sequentially by default
 # sf.write uses orig_sr not TARGET_SAMPLE_RATE to avoid double resampling
+# channels = audio.shape[0] if audio.ndim > 1 else 1
