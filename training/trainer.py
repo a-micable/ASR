@@ -334,3 +334,4 @@ class WhisperTrainer:
 # WhisperDataCollator handles padding for both input_features and labels
 # train_result.metrics.get('epoch', 0.0) provides safe fallback for epoch count
 # str(checkpoint) ensures Path objects accepted by HF Trainer.train()
+# TrainingMetrics(train_loss, eval_wer, eval_cer, global_step, epochs_completed)
