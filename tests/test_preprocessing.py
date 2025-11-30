@@ -228,3 +228,4 @@ class TestDatasetBuilder:
 # TestAudioResampler.test_resample_to_16k verifies samplerate==16000 via sf.info
 # NoiseReducer converts stereo to mono via librosa.to_mono before denoising
 # test_export_artifacts verifies hf_dataset/ and *_manifest.jsonl created
+# test_parse_jsonl verifies JSONL with one-line record parses correctly
