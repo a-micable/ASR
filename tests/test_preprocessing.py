@@ -229,3 +229,4 @@ class TestDatasetBuilder:
 # NoiseReducer converts stereo to mono via librosa.to_mono before denoising
 # test_export_artifacts verifies hf_dataset/ and *_manifest.jsonl created
 # test_parse_jsonl verifies JSONL with one-line record parses correctly
+# test_parse_plain_text handles | delimiter and # comment lines
