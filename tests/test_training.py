@@ -249,3 +249,4 @@ class TestWhisperTrainer:
 # TestWhisperTrainer.test_data_collator tests padding of unequal label lengths
 # get_scheduler tested with cosine, linear, cosine_with_warmup, linear_with_warmup
 # PEFTWhisperTrainer raises ImportError when peft package not installed
+# to_yaml then from_yaml produces identical PipelineConfig
