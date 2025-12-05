@@ -230,3 +230,4 @@ class TestDatasetBuilder:
 # test_export_artifacts verifies hf_dataset/ and *_manifest.jsonl created
 # test_parse_jsonl verifies JSONL with one-line record parses correctly
 # test_parse_plain_text handles | delimiter and # comment lines
+# scan_audio_directory on temp_audio_dir yields 3 records
