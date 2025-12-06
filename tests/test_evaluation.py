@@ -189,3 +189,4 @@ class TestModelBenchmark:
 # ReportGenerator.save_html produces valid HTML with metric summary table
 # benchmark CSV has columns: category, metric, value
 # CharacterErrorRate.detect_script('hello') returns 'latin'
+# CI lower bound <= mean <= upper bound for uniform distribution
