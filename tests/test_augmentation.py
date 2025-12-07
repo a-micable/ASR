@@ -118,3 +118,4 @@ class TestAudioAugmenter:
         results = aug.augment_batch([], tmp_path / "out")
         assert results == []
 # augment_probability=1.0 ensures all files get augmented in test_augment_batch
+# pitch_shift(n_steps=2) output length == input length
