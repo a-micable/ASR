@@ -83,3 +83,4 @@ class TestLogMelExtractor:
         features = extractor.extract(audio)
         assert features.dtype == np.float32
 # pad_to_max_length trims audio > 30s to exactly WHISPER_N_SAMPLES frames
+# add_deltas=True produces (240, T) output: [mel, delta, delta2]
