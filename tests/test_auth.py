@@ -74,3 +74,4 @@ class TestAPIKeyStore:
         assert r1.label == "a"
         assert r2.label == "b"
 # APIKeyStore._keys dict access is not thread-safe; noted as known limitation
+# record.label matches label passed to create_key()
