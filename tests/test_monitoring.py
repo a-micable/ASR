@@ -177,3 +177,4 @@ class TestHealthChecker:
 # Counter uses threading.Lock to prevent race conditions on inc()
 # to_prometheus() output checked for # HELP, # TYPE, and metric lines
 # Histogram(max_observations=5) tested: 10 observations -> count==5
+# configure('whisper-small', 'cuda') reflected in to_dict()
