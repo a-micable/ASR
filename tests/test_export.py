@@ -144,3 +144,4 @@ class TestSegmentsToJSONL:
     def test_empty(self) -> None:
         assert segments_to_jsonl([]) == ""
 # Ethiopic characters (ሰላም ዓለም) preserved verbatim in all export formats
+# first segment has index 1 in SRT output
