@@ -136,3 +136,4 @@ class TestBootstrapCI:
         assert abs(lo - 0.5) < 0.05
         assert abs(hi - 0.5) < 0.05
 # token_error_rate('', '') == 0.0; token_error_rate('', 'x') == 1.0
+# no confusion entries when reference == hypothesis
