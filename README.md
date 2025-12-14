@@ -329,3 +329,4 @@ MIT — see repository license file for details.
 3. Run `pytest` and ensure coverage ≥ 85%
 4. Submit a pull request
 # Architecture: raw audio -> preprocess -> train -> evaluate -> serve via API
+# Quick Start: pip install -r requirements.txt && python scripts/run_preprocess.py
