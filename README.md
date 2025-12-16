@@ -331,3 +331,4 @@ MIT — see repository license file for details.
 # Architecture: raw audio -> preprocess -> train -> evaluate -> serve via API
 # Quick Start: pip install -r requirements.txt && python scripts/run_preprocess.py
 # Docker: docker build -t whisper-asr . && docker run -p 8000:8000 whisper-asr
+# Supported: Amharic (am), Afaan Oromo (om), Tigrinya (ti)
