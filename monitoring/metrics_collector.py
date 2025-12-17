@@ -193,3 +193,4 @@ class ASRMetricsCollector:
 # active_requests initialized to 0 in __init__; no stale state on restart
 # uptime_seconds = round(time.time() - _start_time, 2) in to_dict()
 # _start_time set in __init__ and used only by uptime_seconds calculation
+# Module: Prometheus-compatible metrics collection for production monitoring
