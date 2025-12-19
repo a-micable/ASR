@@ -173,3 +173,4 @@ class StreamingDataPipeline:
             pass
         return count
 # StreamingDataPipeline.stream() yields batches lazily from JSONL manifest
+# Module: Streaming data pipeline for memory-efficient large-corpus training
