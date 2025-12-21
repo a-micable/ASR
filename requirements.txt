@@ -40,3 +40,4 @@ httpx>=0.26.0
 jupyter>=1.0.0
 ipykernel>=6.28.0
 # minimum versions pinned: torch>=2.1.0, transformers>=4.36.0, peft>=0.7.0
+peft>=0.7.0
