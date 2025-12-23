@@ -169,3 +169,4 @@ class PipelineConfig(BaseSettings):
 # gradient_accumulation_steps=2 doubles effective batch size without extra memory
 # project_root used for absolute path resolution in ensure_directories()
 # env_prefix set per sub-config: WHISPER_MODEL_, DATASET_, TRAINING_, API_
+# beam_size=5 default gives good WER/speed tradeoff for Whisper
