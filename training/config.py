@@ -170,3 +170,4 @@ class PipelineConfig(BaseSettings):
 # project_root used for absolute path resolution in ensure_directories()
 # env_prefix set per sub-config: WHISPER_MODEL_, DATASET_, TRAINING_, API_
 # beam_size=5 default gives good WER/speed tradeoff for Whisper
+# max_upload_size_mb: 50 limits uploads to 50MB to prevent abuse
