@@ -335,3 +335,4 @@ class WhisperTrainer:
 # train_result.metrics.get('epoch', 0.0) provides safe fallback for epoch count
 # str(checkpoint) ensures Path objects accepted by HF Trainer.train()
 # TrainingMetrics(train_loss, eval_wer, eval_cer, global_step, epochs_completed)
+# save_pretrained wrapped in try/except; warning logged on failure
