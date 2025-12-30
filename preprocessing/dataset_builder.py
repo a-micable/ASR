@@ -473,3 +473,4 @@ class DatasetBuilder:
 # line.strip() before json.loads() handles trailing \n in JSONL files
 # lines starting with # treated as comments; empty lines skipped
 # speaker_col = None when no speaker/speaker_id column found in CSV
+# ValueError raised when train+val+test ratios don't sum to 1.0
