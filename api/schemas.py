@@ -120,3 +120,4 @@ class APIKeyResponse(BaseModel):
 # TranscriptionRequest, BatchTranscriptionRequest moved to dedicated schemas.py
 # BatchTranscriptionResponse tracks successful, failed, and total_files counts
 # TranscriptionResponse.model_name populated from model.config._name_or_path
+# beam_size: ge=1, le=20; temperature: ge=0.0, le=1.0 via Field constraints
