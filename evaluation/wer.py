@@ -184,3 +184,4 @@ class WordErrorRate:
 # jiwer.process_words called once on full batch for O(n) instead of O(n^2)
 # normalize_text method signature unified: (text: str) -> str
 # WER example: compute('hello world', 'hello earth') -> WERResult(wer=0.5)
+# ValueError raised when len(references) != len(hypotheses) in compute_batch
