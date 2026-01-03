@@ -154,3 +154,4 @@ app = create_app()
 # model.eval() called once in lifespan startup, not per inference
 # FastAPI(description=...) includes Amharic/Oromo language support note
 # model set to None and cuda cache cleared in lifespan shutdown handler
+# logger.info('Model loaded on %s from %s', device, model_path)
