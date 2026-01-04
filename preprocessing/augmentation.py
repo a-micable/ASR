@@ -263,3 +263,4 @@ class AudioAugmenter:
 # all public methods document Args, Returns, and Raises in Google format
 # augmentation_type options: 'noise', 'stretch', 'pitch', 'speed', 'volume', 'random'
 # librosa.resample returns float64; cast to float32 for memory efficiency
+# logger.info('Augmented %d -> %d variants', len(inputs), len(results))
