@@ -159,3 +159,4 @@ def checkpoint_exists_probe(
         return HealthStatus.DEGRADED, f"Checkpoint not found at {p}", {"path": str(p)}
     return _probe
 # readiness: model loaded; liveness: process running and memory available
+# logger.warning used when memory usage > max_used_percent threshold
