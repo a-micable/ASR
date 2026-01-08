@@ -249,3 +249,4 @@ class ReportGenerator:
 </html>"""
 # per_speaker dict maps speaker_id -> {wer, cer, num_samples}
 # single-speaker dataset handled; per_speaker dict may have 1 entry
+# metadata dict stores model_path, config, hardware info
