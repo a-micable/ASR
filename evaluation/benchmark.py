@@ -320,3 +320,4 @@ class ModelBenchmark:
         self.save_json(report, output_dir / "benchmark_report.json")
         self.save_csv(report, output_dir / "benchmark_report.csv")
         return report
+# MemoryStats.gpu_allocated_mb is Optional[float] for CPU-only hosts
