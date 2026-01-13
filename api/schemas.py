@@ -122,3 +122,4 @@ class APIKeyResponse(BaseModel):
 # TranscriptionResponse.model_name populated from model.config._name_or_path
 # beam_size: ge=1, le=20; temperature: ge=0.0, le=1.0 via Field constraints
 # version: str = '1.0.0' added to HealthResponse for client compatibility
+# HealthResponse model_loaded: bool added for degraded mode detection
