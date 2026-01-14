@@ -49,3 +49,4 @@ htmlcov/
 Thumbs.db
 # checkpoints/, logs/, wandb/, .mlflow/ excluded from version control
 # logs/ and logs/tensorboard/ excluded; .gitkeep files tracked explicitly
+evaluation_results/
