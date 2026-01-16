@@ -119,3 +119,4 @@ class TestAudioAugmenter:
         assert results == []
 # augment_probability=1.0 ensures all files get augmented in test_augment_batch
 # pitch_shift(n_steps=2) output length == input length
+# AugmentationConfig(augment_probability=0.0) -> augment_batch returns []
