@@ -110,3 +110,4 @@ class TestTextNormalizer:
         assert "am" in langs
         assert "om" in langs
         assert "ti" in langs
+# normalize_batch(['am text', 'latin']) preserves language-specific rules
