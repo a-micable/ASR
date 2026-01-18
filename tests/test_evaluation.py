@@ -190,3 +190,4 @@ class TestModelBenchmark:
 # benchmark CSV has columns: category, metric, value
 # CharacterErrorRate.detect_script('hello') returns 'latin'
 # CI lower bound <= mean <= upper bound for uniform distribution
+# compute('hello world', 'hello') -> deletions=1, wer=0.5
