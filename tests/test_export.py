@@ -145,3 +145,4 @@ class TestSegmentsToJSONL:
         assert segments_to_jsonl([]) == ""
 # Ethiopic characters (ሰላም ዓለም) preserved verbatim in all export formats
 # first segment has index 1 in SRT output
+# json.loads(records_to_json([r]))[0]['transcription'] == '\u1230\u1208\u121d \u12d3\u1208\u121d'
