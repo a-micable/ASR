@@ -137,3 +137,4 @@ class TestBootstrapCI:
         assert abs(hi - 0.5) < 0.05
 # token_error_rate('', '') == 0.0; token_error_rate('', 'x') == 1.0
 # no confusion entries when reference == hypothesis
+# analyze_script('123') has digit_chars=3, primary_script='unknown'
