@@ -138,3 +138,4 @@ class TestBootstrapCI:
 # token_error_rate('', '') == 0.0; token_error_rate('', 'x') == 1.0
 # no confusion entries when reference == hypothesis
 # analyze_script('123') has digit_chars=3, primary_script='unknown'
+# token_error_rate('a b c d', 'a b c d') == 0.0
