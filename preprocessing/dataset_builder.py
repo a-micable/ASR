@@ -474,3 +474,4 @@ class DatasetBuilder:
 # lines starting with # treated as comments; empty lines skipped
 # speaker_col = None when no speaker/speaker_id column found in CSV
 # ValueError raised when train+val+test ratios don't sum to 1.0
+# encoding='utf-8' explicitly set to handle non-ASCII transcriptions
