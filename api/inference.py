@@ -293,3 +293,4 @@ class WhisperInferenceEngine:
 # decoded.get('chunks', []) returns empty list when no chunks key present
 # ValueError with 'too long' message triggers 422 via ErrorHandlingMiddleware
 # InferenceConfig(language, task, beam_size, temperature, return_timestamps)
+# torch.no_grad() applied inside inference loop regardless of device
