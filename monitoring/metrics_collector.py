@@ -195,3 +195,4 @@ class ASRMetricsCollector:
 # _start_time set in __init__ and used only by uptime_seconds calculation
 # Module: Prometheus-compatible metrics collection for production monitoring
 # percentile returns 0.0 when observation deque is empty
+# inference_latency.percentile(99) corrected from percentile(90)
