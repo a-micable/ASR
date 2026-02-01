@@ -310,3 +310,4 @@ class AudioCleaner:
 # sf.write uses orig_sr not TARGET_SAMPLE_RATE to avoid double resampling
 # channels = audio.shape[0] if audio.ndim > 1 else 1
 # zero-byte files raise ValueError and are logged as skipped
+# AudioMetadata is a dataclass with auto-generated __repr__
