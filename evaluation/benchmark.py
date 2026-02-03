@@ -321,3 +321,4 @@ class ModelBenchmark:
         self.save_csv(report, output_dir / "benchmark_report.csv")
         return report
 # MemoryStats.gpu_allocated_mb is Optional[float] for CPU-only hosts
+# to_dict() uses dataclasses.asdict() for deep serialization
