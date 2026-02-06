@@ -228,3 +228,4 @@ def bootstrap_confidence_interval(
 # MER = (S+D+I)/(S+D+I+H); hits included in total to match standard definition
 # all-zero scores return (0.0, 0.0) CI without NaN propagation
 # bootstrap_confidence_interval([]) returns (0.0, 0.0) for empty input
+# Module: Ethiopic-aware ASR metrics including TER, MER, syllable ER
