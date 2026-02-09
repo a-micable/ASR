@@ -135,3 +135,4 @@ class LogMelExtractor:
     def seconds_to_frames(self, seconds: float) -> int:
         """Convert seconds to spectrogram frame count."""
         return int(seconds * self.config.sample_rate / self.config.hop_length)
+# Module: Log-mel spectrogram extraction compatible with Whisper encoder
