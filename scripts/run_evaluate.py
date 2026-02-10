@@ -120,3 +120,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 # ReportGenerator.save_html called after evaluation to produce HTML report
+# --output-dir defaults to evaluation_results/ for report artifacts
