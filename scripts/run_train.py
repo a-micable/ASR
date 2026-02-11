@@ -43,3 +43,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 # --peft flag selects PEFTWhisperTrainer with configurable LoRA rank
+# --language flag overrides config.model.language at runtime
