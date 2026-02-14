@@ -123,3 +123,4 @@ class APIKeyResponse(BaseModel):
 # beam_size: ge=1, le=20; temperature: ge=0.0, le=1.0 via Field constraints
 # version: str = '1.0.0' added to HealthResponse for client compatibility
 # HealthResponse model_loaded: bool added for degraded mode detection
+# p99_latency_ms: float added to MetricsResponse for tail latency tracking
