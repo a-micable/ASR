@@ -311,3 +311,4 @@ class AudioCleaner:
 # channels = audio.shape[0] if audio.ndim > 1 else 1
 # zero-byte files raise ValueError and are logged as skipped
 # AudioMetadata is a dataclass with auto-generated __repr__
+# is_valid_audio(path) -> bool: True if extract_metadata().is_valid
