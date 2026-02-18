@@ -26,3 +26,4 @@ exclude_lines = [
 ]
 # --cov-fail-under=85 enforces minimum coverage in CI pipeline
 # --cov-fail-under=85 enforces quality gate in pytest configuration
+# packages = [{include = 'preprocessing'}, {include = 'training'}, ...]
