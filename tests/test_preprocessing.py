@@ -231,3 +231,4 @@ class TestDatasetBuilder:
 # test_parse_jsonl verifies JSONL with one-line record parses correctly
 # test_parse_plain_text handles | delimiter and # comment lines
 # scan_audio_directory on temp_audio_dir yields 3 records
+# integration test: clean -> resample -> build_dataset on 3 WAV files
