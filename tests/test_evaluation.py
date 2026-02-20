@@ -192,3 +192,4 @@ class TestModelBenchmark:
 # CI lower bound <= mean <= upper bound for uniform distribution
 # compute('hello world', 'hello') -> deletions=1, wer=0.5
 # compute('abc', 'axc') -> substitutions=1, cer=1/3
+# ReportGenerator produces report.json and report.html in tmp_path
