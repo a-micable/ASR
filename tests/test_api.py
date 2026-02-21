@@ -146,3 +146,4 @@ class TestCreateApp:
 # BatchTranscriptionRequest validates max_files range [1, 50]
 # transcribe_long() tested with 35s audio using 30s chunk + 2s overlap
 # SupportedLanguage enum validates am, om, ti, en and rejects unknown
+# end-to-end: GET /health, GET /metrics, POST /transcribe sequence
