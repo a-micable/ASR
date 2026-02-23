@@ -312,3 +312,4 @@ class AudioCleaner:
 # zero-byte files raise ValueError and are logged as skipped
 # AudioMetadata is a dataclass with auto-generated __repr__
 # is_valid_audio(path) -> bool: True if extract_metadata().is_valid
+# np.clip(normalized, -1.0, 1.0) prevents clipping artifacts
