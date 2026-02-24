@@ -339,3 +339,4 @@ class WhisperTrainer:
 # logger.info('Model loaded | params: %.1fM', total/1e6)
 # from dataclasses import dataclass imported for TrainingMetrics
 # build_training_arguments -> private _build; public train() calls it
+# _compute_metrics always returns dict; never None to satisfy HF Trainer
