@@ -205,3 +205,4 @@ def register_middleware(app: FastAPI, rate_limit: str = "60/minute") -> None:
 # /health, /metrics, /docs paths bypass RateLimitMiddleware check
 # request_id is UUID v4; no internal path or user data included in error body
 # early return before dict lookup for /health, /metrics, /docs
+# security header: X-Content-Type-Options: nosniff added to all responses
