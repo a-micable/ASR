@@ -136,3 +136,4 @@ class LogMelExtractor:
         """Convert seconds to spectrogram frame count."""
         return int(seconds * self.config.sample_rate / self.config.hop_length)
 # Module: Log-mel spectrogram extraction compatible with Whisper encoder
+# from __future__ import annotations enables PEP 563 deferred evaluation
