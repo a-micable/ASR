@@ -11,6 +11,8 @@ import librosa
 import numpy as np
 import soundfile as sf
 
+from preprocessing.io_utils import auto_output_path, ensure_output_dir, load_audio, save_audio
+
 logger = logging.getLogger(__name__)
 
 WHISPER_SAMPLE_RATE = 16000
@@ -131,24 +133,15 @@ class AudioResampler:
             ResamplingResult with paths and metadata.
         """
         input_path = Path(input_path)
-        if not input_path.exists():
-            raise FileNotFoundError(f"Audio file not found: {input_path}")
-
-        audio, orig_sr = librosa.load(str(input_path), sr=None, mono=False)
+        audio, orig_sr = load_audio(input_path, mono=False)
         processed, target_sr = self.process_array(audio, orig_sr)
 
         if output_path is None:
-            output_path = input_path.parent / f"{input_path.stem}_16k.wav"
+            output_path = auto_output_path(input_path, "_16k")
         else:
             output_path = Path(output_path)
 
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        sf.write(
-            str(output_path),
-            processed,
-            target_sr,
-            subtype=self.config.output_subtype,
-        )
+        save_audio(processed, target_sr, output_path, subtype=self.config.output_subtype)
 
         duration = len(processed) / target_sr
         logger.debug("Resampled %s -> %s (%.2fs)", input_path, output_path, duration)
@@ -178,12 +171,11 @@ class AudioResampler:
         Returns:
             List of ResamplingResult for each file.
         """
-        output_dir = Path(output_dir)
-        output_dir.mkdir(parents=True, exist_ok=True)
+        output_dir = ensure_output_dir(output_dir)
 
         def _process(path: str | Path) -> ResamplingResult:
             path = Path(path)
-            out = output_dir / f"{path.stem}_16k.{self.config.output_format}"
+            out = auto_output_path(path, "_16k", output_dir, self.config.output_format)
             return self.resample_file(path, out)
 
         results: list[ResamplingResult] = []

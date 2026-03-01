@@ -12,6 +12,8 @@ import librosa
 import numpy as np
 import soundfile as sf
 
+from preprocessing.io_utils import auto_output_path, ensure_output_dir, load_audio, save_audio
+
 logger = logging.getLogger(__name__)
 
 
@@ -202,16 +204,15 @@ class AudioAugmenter:
             AugmentationResult.
         """
         input_path = Path(input_path)
-        audio, sr = librosa.load(str(input_path), sr=None, mono=True)
+        audio, sr = load_audio(input_path, mono=True)
         augmented, aug_type, params = self.augment_array(audio, sr, augmentation_type)
 
         if output_path is None:
-            output_path = input_path.parent / f"{input_path.stem}_{aug_type}.wav"
+            output_path = auto_output_path(input_path, f"_{aug_type}")
         else:
             output_path = Path(output_path)
 
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        sf.write(str(output_path), augmented, sr, subtype="PCM_16")
+        save_audio(augmented, sr, output_path)
         logger.debug("Augmented %s -> %s [%s]", input_path.name, output_path.name, aug_type)
 
         return AugmentationResult(
@@ -238,8 +239,7 @@ class AudioAugmenter:
         Returns:
             List of AugmentationResult.
         """
-        output_dir = Path(output_dir)
-        output_dir.mkdir(parents=True, exist_ok=True)
+        output_dir = ensure_output_dir(output_dir)
         results = []
 
         for path in input_paths:
@@ -247,7 +247,7 @@ class AudioAugmenter:
             for i in range(multiplier):
                 if self._rng.random() > self.config.augment_probability:
                     continue
-                out = output_dir / f"{path.stem}_aug{i}.wav"
+                out = auto_output_path(path, f"_aug{i}", output_dir)
                 try:
                     results.append(self.augment_file(path, out))
                 except Exception as exc:

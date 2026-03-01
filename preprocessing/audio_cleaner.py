@@ -11,6 +11,8 @@ import librosa
 import numpy as np
 import soundfile as sf
 
+from preprocessing.io_utils import auto_output_path, ensure_output_dir, load_audio, save_audio
+
 logger = logging.getLogger(__name__)
 
 
@@ -84,15 +86,7 @@ class AudioCleaner:
         Raises:
             ValueError: If file cannot be loaded.
         """
-        path = Path(file_path)
-        if not path.exists():
-            raise ValueError(f"Audio file not found: {path}")
-
-        try:
-            audio, sr = librosa.load(str(path), sr=None, mono=False)
-            return audio, sr
-        except Exception as exc:
-            raise ValueError(f"Failed to load audio {path}: {exc}") from exc
+        return load_audio(file_path, mono=False)
 
     def extract_metadata(self, file_path: str | Path) -> AudioMetadata:
         """
@@ -243,12 +237,11 @@ class AudioCleaner:
             was_normalized = True
 
         if output_path is None:
-            output_path = input_path.parent / f"{input_path.stem}_clean.wav"
+            output_path = auto_output_path(input_path, "_clean")
         else:
             output_path = Path(output_path)
 
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        sf.write(str(output_path), audio, sr, subtype="PCM_16")
+        save_audio(audio, sr, output_path)
 
         logger.info(
             "Cleaned audio: %s -> %s (trimmed %d samples)",
@@ -282,14 +275,12 @@ class AudioCleaner:
         Returns:
             List of CleaningResult or error dicts for failed files.
         """
-        output_dir = Path(output_dir)
-        output_dir.mkdir(parents=True, exist_ok=True)
+        output_dir = ensure_output_dir(output_dir)
         results: list[CleaningResult | dict[str, Any]] = []
 
         for input_path in input_paths:
             input_path = Path(input_path)
-            out_path = output_dir / f"{input_path.stem}_clean.wav"
-            try:
+            out_path = output_dir / f"{input_path.stem}_clean.wav"            try:
                 result = self.clean(input_path, out_path)
                 results.append(result)
             except ValueError as exc:

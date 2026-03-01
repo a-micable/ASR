@@ -11,6 +11,8 @@ import noisereduce as nr
 import numpy as np
 import soundfile as sf
 
+from preprocessing.io_utils import auto_output_path, ensure_output_dir, load_audio, save_audio
+
 logger = logging.getLogger(__name__)
 
 
@@ -154,7 +156,7 @@ class NoiseReducer:
             NoiseReductionResult with SNR improvement estimate.
         """
         input_path = Path(input_path)
-        audio, sr = librosa.load(str(input_path), sr=None, mono=True)
+        audio, sr = load_audio(input_path, mono=True)
 
         snr_before = self._compute_snr(audio)
         reduced, applied = self.reduce_noise_array(audio, sr)
@@ -166,12 +168,11 @@ class NoiseReducer:
         snr_improvement = snr_after - snr_before
 
         if output_path is None:
-            output_path = input_path.parent / f"{input_path.stem}_denoised.wav"
+            output_path = auto_output_path(input_path, "_denoised")
         else:
             output_path = Path(output_path)
 
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        sf.write(str(output_path), reduced, sr, subtype="PCM_16")
+        save_audio(reduced, sr, output_path)
 
         logger.info(
             "Noise reduction %s: applied=%s, SNR Δ=%.1f dB",
@@ -202,13 +203,12 @@ class NoiseReducer:
         Returns:
             List of results.
         """
-        output_dir = Path(output_dir)
-        output_dir.mkdir(parents=True, exist_ok=True)
+        output_dir = ensure_output_dir(output_dir)
         results = []
 
         for path in input_paths:
             path = Path(path)
-            out = output_dir / f"{path.stem}_denoised.wav"
+            out = auto_output_path(path, "_denoised", output_dir)
             results.append(self.process_file(path, out))
 
         return results
