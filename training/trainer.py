@@ -22,7 +22,7 @@ from transformers import (
 
 from evaluation.cer import CharacterErrorRate
 from evaluation.wer import WordErrorRate
-from logging_config import setup_logging
+from logging_config import get_logger
 from training.callbacks import build_callbacks
 from training.config import PipelineConfig
 
@@ -75,11 +75,7 @@ class WhisperTrainer:
             config: Full pipeline configuration.
         """
         self.config = config
-        setup_logging(
-            level=config.logging.level,
-            log_file=config.logging.log_dir / "training.log",
-            structured=config.logging.structured,
-        )
+        config.configure_logging_with_file("training.log")
         config.ensure_directories()
 
         self.processor: WhisperProcessor | None = None
@@ -87,6 +83,21 @@ class WhisperTrainer:
         self.trainer: Seq2SeqTrainer | None = None
         self.wer_evaluator = WordErrorRate()
         self.cer_evaluator = CharacterErrorRate(language=config.model.language)
+
+    def _require_loaded(self) -> tuple[WhisperProcessor, WhisperForConditionalGeneration]:
+        """
+        Return (processor, model) or raise if not yet loaded.
+
+        Replaces the repeated ``assert self.processor is not None`` /
+        ``assert self.model is not None`` guards that appeared four times
+        across _prepare_dataset, prepare_datasets, _compute_metrics, and
+        initialize_trainer.
+        """
+        if self.processor is None or self.model is None:
+            raise RuntimeError(
+                "Model and processor are not loaded. Call load_model_and_processor() first."
+            )
+        return self.processor, self.model
 
     def load_model_and_processor(self) -> None:
         """Load Whisper model, tokenizer, and feature extractor."""
@@ -137,7 +148,7 @@ class WhisperTrainer:
 
     def _prepare_dataset(self, batch: dict[str, Any]) -> dict[str, Any]:
         """Map function: extract features and tokenize labels."""
-        assert self.processor is not None
+        processor, _ = self._require_loaded()
         audio = batch["audio"]
 
         if isinstance(audio, str):
@@ -153,14 +164,14 @@ class WhisperTrainer:
             array = np.asarray(audio, dtype=np.float32)
             sampling_rate = self.config.dataset.sample_rate
 
-        inputs = self.processor.feature_extractor(
+        inputs = processor.feature_extractor(
             array,
             sampling_rate=sampling_rate,
             return_tensors="np",
         )
         batch["input_features"] = inputs.input_features[0]
 
-        batch["labels"] = self.processor.tokenizer(batch["text"]).input_ids
+        batch["labels"] = processor.tokenizer(batch["text"]).input_ids
         return batch
 
     def prepare_datasets(self, dataset_dict: DatasetDict) -> DatasetDict:
@@ -173,7 +184,7 @@ class WhisperTrainer:
         Returns:
             Processed DatasetDict.
         """
-        assert self.processor is not None
+        processor, _ = self._require_loaded()
 
         processed = dataset_dict.map(
             self._prepare_dataset,
@@ -184,17 +195,17 @@ class WhisperTrainer:
 
     def _compute_metrics(self, pred: Any) -> dict[str, float]:
         """Compute WER during evaluation."""
-        assert self.processor is not None
+        processor, _ = self._require_loaded()
         pred_ids = pred.predictions
         label_ids = pred.label_ids
 
         if isinstance(pred_ids, tuple):
             pred_ids = pred_ids[0]
 
-        label_ids = np.where(label_ids != -100, label_ids, self.processor.tokenizer.pad_token_id)
+        label_ids = np.where(label_ids != -100, label_ids, processor.tokenizer.pad_token_id)
 
-        pred_str = self.processor.tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
-        label_str = self.processor.tokenizer.batch_decode(label_ids, skip_special_tokens=True)
+        pred_str = processor.tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
+        label_str = processor.tokenizer.batch_decode(label_ids, skip_special_tokens=True)
 
         wer = self.wer_evaluator.compute_batch(pred_str, label_str)
         cer = self.cer_evaluator.compute_batch(pred_str, label_str)
@@ -258,14 +269,14 @@ class WhisperTrainer:
         if self.model is None or self.processor is None:
             self.load_model_and_processor()
 
-        assert self.model is not None and self.processor is not None
+        processor, model = self._require_loaded()
 
         training_args = self.build_training_arguments()
-        data_collator = WhisperDataCollator(self.processor)
+        data_collator = WhisperDataCollator(processor)
         callbacks = build_callbacks(self.config, self.config.logging.log_dir)
 
         self.trainer = Seq2SeqTrainer(
-            model=self.model,
+            model=model,
             args=training_args,
             train_dataset=train_dataset,
             eval_dataset=eval_dataset,
