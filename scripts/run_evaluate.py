@@ -35,7 +35,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     config = PipelineConfig.from_yaml(args.config)
-    setup_logging(level=config.logging.level, structured=config.logging.structured)
+    config.configure_logging()
 
     model_path = args.model_path or config.api.model_path
     device = "cuda" if torch.cuda.is_available() else "cpu"

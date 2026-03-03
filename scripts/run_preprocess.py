@@ -30,7 +30,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     config = PipelineConfig.from_yaml(args.config)
-    setup_logging(level=config.logging.level, structured=config.logging.structured)
+    config.configure_logging()
     config.ensure_directories()
 
     raw_dir = config.dataset.raw_dir

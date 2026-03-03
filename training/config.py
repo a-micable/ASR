@@ -130,6 +130,34 @@ class PipelineConfig(BaseSettings):
     api: APIConfig = Field(default_factory=APIConfig)
     project_root: Path = Path(".")
 
+    def configure_logging(self) -> None:
+        """
+        Initialize logging from this config's logging settings.
+
+        Eliminates the repeated ``setup_logging(level=config.logging.level, ...)``
+        boilerplate that appeared in every script and trainer ``__init__``.
+        """
+        from logging_config import setup_logging
+        setup_logging(
+            level=self.logging.level,
+            log_file=None,
+            structured=self.logging.structured,
+        )
+
+    def configure_logging_with_file(self, log_filename: str) -> None:
+        """
+        Initialize logging and write to a named file under log_dir.
+
+        Args:
+            log_filename: Filename relative to log_dir, e.g. ``'training.log'``.
+        """
+        from logging_config import setup_logging
+        setup_logging(
+            level=self.logging.level,
+            log_file=self.logging.log_dir / log_filename,
+            structured=self.logging.structured,
+        )
+
     @classmethod
     def from_yaml(cls, path: str | Path) -> PipelineConfig:
         """
