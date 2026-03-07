@@ -1,19 +1,60 @@
+# Version control
 .git
 .gitignore
-__pycache__
-*.pyc
-.pytest_cache
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test and CI artifacts
+tests/
+.pytest_cache/
 .coverage
-htmlcov
-.venv
-venv
-notebooks/.ipynb_checkpoints
+htmlcov/
+.mypy_cache/
+.tox/
+
+# Development-only requirements
+requirements-dev.txt
+
+# Notebooks (not needed in production image)
+notebooks/
+
+# Data directories (mounted at runtime via volumes)
 data/raw/*
 data/processed/*
 data/augmented/*
-checkpoints
-logs
-*.md
-!README.md
-tests
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/augmented/.gitkeep
+
+# Model checkpoints (mounted at runtime)
+checkpoints/
+
+# Logs (mounted at runtime)
+logs/
+
+# Environment files with secrets
 .env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary scripts
+make_commits*.sh
