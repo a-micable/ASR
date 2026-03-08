@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  asr-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: application
+    image: whisper-asr:latest
+    container_name: whisper_asr_api
+    ports:
+      - "8000:8000"
+    environment:
+      - API_PORT=8000
+      - API_MODEL_PATH=/app/checkpoints/best
+      - API_WORKERS=1
+      - LOG_LEVEL=info
+      - LOG_STRUCTURED=true
+      - WHISPER_MODEL_LANGUAGE=am
+      - WHISPER_MODEL_NAME=openai/whisper-small
+    volumes:
+      # Mount checkpoints and logs from host for persistence
+      - ./checkpoints:/app/checkpoints:ro
+      - ./logs:/app/logs
+      - ./data:/app/data:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+    restart: unless-stopped
+    # GPU support — remove 'deploy' block if running CPU-only
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # CPU-only variant (no GPU reservation)
+  asr-api-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: application
+    image: whisper-asr:cpu
+    container_name: whisper_asr_api_cpu
+    profiles: ["cpu"]
+    ports:
+      - "8001:8000"
+    environment:
+      - API_PORT=8000
+      - API_MODEL_PATH=/app/checkpoints/best
+      - WHISPER_MODEL_LANGUAGE=am
+    volumes:
+      - ./checkpoints:/app/checkpoints:ro
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
