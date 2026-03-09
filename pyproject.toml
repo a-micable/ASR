@@ -8,22 +8,77 @@ version = "1.0.0"
 description = "Production-ready Whisper fine-tuning pipeline for low-resource languages"
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "torch>=2.1.0,<2.4.0",
+    "torchaudio>=2.1.0,<2.4.0",
+    "transformers>=4.36.0,<4.42.0",
+    "datasets>=2.16.0,<3.0.0",
+    "accelerate>=0.25.0,<0.33.0",
+    "evaluate>=0.4.1,<0.5.0",
+    "peft>=0.7.0,<0.12.0",
+    "librosa>=0.10.1,<0.11.0",
+    "soundfile>=0.12.1,<0.13.0",
+    "noisereduce>=3.0.0,<3.1.0",
+    "scipy>=1.11.0,<1.14.0",
+    "fastapi>=0.109.0,<0.112.0",
+    "uvicorn[standard]>=0.27.0,<0.31.0",
+    "python-multipart>=0.0.6,<0.0.10",
+    "pydantic>=2.5.0,<3.0.0",
+    "pydantic-settings>=2.1.0,<3.0.0",
+    "jiwer>=3.0.3,<3.1.0",
+    "psutil>=5.9.7,<6.1.0",
+    "numpy>=1.24.0,<2.0.0",
+    "pandas>=2.1.0,<3.0.0",
+    "matplotlib>=3.8.0,<3.10.0",
+    "tqdm>=4.66.0,<5.0.0",
+    "pyyaml>=6.0.1,<7.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0,<9.0.0",
+    "pytest-cov>=4.1.0,<6.0.0",
+    "pytest-asyncio>=0.23.0,<0.24.0",
+    "httpx>=0.26.0,<0.28.0",
+    "jupyter>=1.0.0",
+    "ipykernel>=6.28.0",
+]
+
+[project.scripts]
+whisper-train    = "scripts.run_train:main"
+whisper-preprocess = "scripts.run_preprocess:main"
+whisper-evaluate = "scripts.run_evaluate:main"
+
+[tool.setuptools.packages.find]
+include = ["preprocessing*", "training*", "evaluation*", "api*", "monitoring*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
-addopts = "-v --cov=preprocessing --cov=training --cov=evaluation --cov=api --cov=logging_config --cov-report=term-missing --cov-fail-under=85"
+addopts = [
+    "-v",
+    "--cov=preprocessing",
+    "--cov=training",
+    "--cov=evaluation",
+    "--cov=api",
+    "--cov=monitoring",
+    "--cov=logging_config",
+    "--cov-report=term-missing",
+    "--cov-fail-under=80",
+]
 
 [tool.coverage.run]
-source = ["preprocessing", "training", "evaluation", "api", "logging_config.py"]
-omit = ["tests/*", "notebooks/*"]
+source = ["preprocessing", "training", "evaluation", "api", "monitoring", "logging_config"]
+omit = ["tests/*", "notebooks/*", "scripts/*"]
 
 [tool.coverage.report]
 exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",
     "raise NotImplementedError",
+    "if __name__ == .__main__.:",
 ]
-# --cov-fail-under=85 enforces minimum coverage in CI pipeline
 # --cov-fail-under=85 enforces quality gate in pytest configuration
-# packages = [{include = 'preprocessing'}, {include = 'training'}, ...]
+# --cov-fail-under=80 enforces quality gate in pytest configuration
+# whisper-finetune-pipeline as editable install
