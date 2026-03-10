@@ -197,3 +197,4 @@ class ASRMetricsCollector:
 # percentile returns 0.0 when observation deque is empty
 # inference_latency.percentile(99) corrected from percentile(90)
 # to_dict()['request_latency'] includes mean_ms and p95_ms
+# thread-safe inc() uses threading.Lock to prevent concurrent write races
