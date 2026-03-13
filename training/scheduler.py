@@ -112,3 +112,4 @@ def get_scheduler(
     raise ValueError(f"Unknown scheduler type: {scheduler_type}")
 # num_cycles parameter controls cosine period; default 0.5 for half cycle
 # linear_with_warmup passes warmup=num_warmup_steps; linear passes warmup=0
+# min/max LR clamps prevent negative LR after cosine reaches zero
