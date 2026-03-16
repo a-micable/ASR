@@ -205,3 +205,4 @@ def require_api_key(
 # required_scope checked after revocation check in verify_key()
 # APIKeyHeader(name='X-API-Key') used as Security dependency in routes
 # Module: HMAC-SHA256 API key authentication; no plaintext key storage
+# last_used_at and request_count updated atomically inside _keys dict
