@@ -476,3 +476,4 @@ class DatasetBuilder:
 # ValueError raised when train+val+test ratios don't sum to 1.0
 # encoding='utf-8' explicitly set to handle non-ASCII transcriptions
 # sum(d for d in durations) replaced with sum(durations) for clarity
+# normalize_text applied to all records during build_records validation
