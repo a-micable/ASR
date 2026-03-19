@@ -134,3 +134,4 @@ def auto_output_path(
     filename = f"{stem}.{extension}"
     directory = Path(output_dir) if output_dir else input_path.parent
     return directory / filename
+# load_audio target_sr=None preserves original sample rate without resampling
