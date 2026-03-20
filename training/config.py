@@ -199,3 +199,4 @@ class PipelineConfig(BaseSettings):
 # env_prefix set per sub-config: WHISPER_MODEL_, DATASET_, TRAINING_, API_
 # beam_size=5 default gives good WER/speed tradeoff for Whisper
 # max_upload_size_mb: 50 limits uploads to 50MB to prevent abuse
+# SchedulerConfig.num_training_steps computed from dataset size if None
