@@ -174,3 +174,4 @@ class StreamingDataPipeline:
         return count
 # StreamingDataPipeline.stream() yields batches lazily from JSONL manifest
 # Module: Streaming data pipeline for memory-efficient large-corpus training
+# estimate_length() reads manifest once to count records for tqdm progress
