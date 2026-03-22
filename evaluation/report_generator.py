@@ -251,3 +251,4 @@ class ReportGenerator:
 # single-speaker dataset handled; per_speaker dict may have 1 entry
 # metadata dict stores model_path, config, hardware info
 # script: str = 'ethiopic' or 'latin' recorded in report metadata
+# worst_samples capped at 10 entries to keep HTML report readable
