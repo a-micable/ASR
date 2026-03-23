@@ -322,3 +322,4 @@ class ModelBenchmark:
         return report
 # MemoryStats.gpu_allocated_mb is Optional[float] for CPU-only hosts
 # to_dict() uses dataclasses.asdict() for deep serialization
+# measure_memory() called after inference to capture peak GPU allocation
