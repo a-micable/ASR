@@ -86,3 +86,4 @@ if __name__ == "__main__":
     main()
 # --augment flag enables AudioAugmenter batch processing step
 # --workers controls ThreadPoolExecutor parallelism in resampler
+# AudioAugmenter applied when --augment flag set before dataset build
