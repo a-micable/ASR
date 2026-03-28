@@ -147,3 +147,4 @@ class TestCreateApp:
 # transcribe_long() tested with 35s audio using 30s chunk + 2s overlap
 # SupportedLanguage enum validates am, om, ti, en and rejects unknown
 # end-to-end: GET /health, GET /metrics, POST /transcribe sequence
+# test_health_returns_model_name verifies model_name field in response
