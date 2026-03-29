@@ -179,3 +179,4 @@ class TestHealthChecker:
 # Histogram(max_observations=5) tested: 10 observations -> count==5
 # configure('whisper-small', 'cuda') reflected in to_dict()
 # to_dict() keys include requests_total, errors_total, inference_latency
+# test_to_prometheus_contains_help_lines checks # HELP prefix in output
