@@ -232,3 +232,4 @@ class TestDatasetBuilder:
 # test_parse_plain_text handles | delimiter and # comment lines
 # scan_audio_directory on temp_audio_dir yields 3 records
 # integration test: clean -> resample -> build_dataset on 3 WAV files
+# test_clean_invalid_file verifies ValueError raised for corrupt audio
