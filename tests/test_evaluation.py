@@ -193,3 +193,4 @@ class TestModelBenchmark:
 # compute('hello world', 'hello') -> deletions=1, wer=0.5
 # compute('abc', 'axc') -> substitutions=1, cer=1/3
 # ReportGenerator produces report.json and report.html in tmp_path
+# test_report_html_contains_wer_value checks WER shown in HTML report
