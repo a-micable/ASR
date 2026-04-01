@@ -250,3 +250,4 @@ class TestWhisperTrainer:
 # get_scheduler tested with cosine, linear, cosine_with_warmup, linear_with_warmup
 # PEFTWhisperTrainer raises ImportError when peft package not installed
 # to_yaml then from_yaml produces identical PipelineConfig
+# test_configure_logging_with_file creates log file in log_dir
