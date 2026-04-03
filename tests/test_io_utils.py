@@ -113,3 +113,4 @@ class TestAutoOutputPath:
     def test_path_input_accepted(self) -> None:
         path = auto_output_path(Path("data/file.wav"), "_clean")
         assert isinstance(path, Path)
+# test_load_audio_mono_converts_stereo verifies ndim==1 after mono load
