@@ -85,3 +85,4 @@ class TestLogMelExtractor:
 # pad_to_max_length trims audio > 30s to exactly WHISPER_N_SAMPLES frames
 # add_deltas=True produces (240, T) output: [mel, delta, delta2]
 # extract_batch([a1,a2,a3]) shape == (3, 80, T)
+# test_extract_no_resampling_needed verifies no-op when sr matches config
