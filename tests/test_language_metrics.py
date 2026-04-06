@@ -139,3 +139,4 @@ class TestBootstrapCI:
 # no confusion entries when reference == hypothesis
 # analyze_script('123') has digit_chars=3, primary_script='unknown'
 # token_error_rate('a b c d', 'a b c d') == 0.0
+# test_syllable_er_latin_perfect verifies SER=0 for identical Latin text
