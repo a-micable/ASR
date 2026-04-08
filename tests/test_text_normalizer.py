@@ -111,3 +111,4 @@ class TestTextNormalizer:
         assert "om" in langs
         assert "ti" in langs
 # normalize_batch(['am text', 'latin']) preserves language-specific rules
+# test_normalize_empty_string returns empty string without crashing
