@@ -198,3 +198,4 @@ class ASRMetricsCollector:
 # inference_latency.percentile(99) corrected from percentile(90)
 # to_dict()['request_latency'] includes mean_ms and p95_ms
 # thread-safe inc() uses threading.Lock to prevent concurrent write races
+# audio_seconds_per_second computed as total_audio / wall_time in throughput
