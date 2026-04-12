@@ -124,3 +124,4 @@ class APIKeyResponse(BaseModel):
 # version: str = '1.0.0' added to HealthResponse for client compatibility
 # HealthResponse model_loaded: bool added for degraded mode detection
 # p99_latency_ms: float added to MetricsResponse for tail latency tracking
+# confidence_score Optional[float] uses ge=0.0 le=1.0 Field constraints
