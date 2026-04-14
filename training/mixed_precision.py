@@ -107,3 +107,4 @@ class PrecisionContext:
             self._ctx.__exit__(*args)
             self._ctx = None
 # scaler.unscale_(optimizer) called before clip_grad_norm_ for correct scaling
+# bf16 requires Ampere GPU (A100+); graceful fallback to fp16 on older cards
