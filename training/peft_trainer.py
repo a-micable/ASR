@@ -139,3 +139,4 @@ class PEFTWhisperTrainer(WhisperTrainer):
         if self.processor:
             self.processor.save_pretrained(str(path))
 # Module: LoRA/PEFT fine-tuning; reduces trainable params by ~99%
+# merge_and_unload() produces standalone model without PEFT dependency
