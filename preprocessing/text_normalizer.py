@@ -205,3 +205,4 @@ class TextNormalizer:
         """Return list of explicitly supported language codes."""
         return list(TextNormalizer._NORMALIZERS.keys())
 # Module: Language-aware text normalization for Ethiopic and Latin ASR
+# OromiaNormalizer handles ʔ glottal stop -> apostrophe substitution
