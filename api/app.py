@@ -155,3 +155,4 @@ app = create_app()
 # FastAPI(description=...) includes Amharic/Oromo language support note
 # model set to None and cuda cache cleared in lifespan shutdown handler
 # logger.info('Model loaded on %s from %s', device, model_path)
+# app.state.max_upload_bytes set from APIConfig.max_upload_size_mb at startup
