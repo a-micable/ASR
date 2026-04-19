@@ -74,3 +74,4 @@ def setup_logging(
 def get_logger(name: str) -> logging.Logger:
     """Return a named logger."""
     return logging.getLogger(name)
+# StructuredFormatter includes module, function, line for easier log parsing
