@@ -332,3 +332,4 @@ MIT — see repository license file for details.
 # Quick Start: pip install -r requirements.txt && python scripts/run_preprocess.py
 # Docker: docker build -t whisper-asr . && docker run -p 8000:8000 whisper-asr
 # Supported: Amharic (am), Afaan Oromo (om), Tigrinya (ti)
+# Environment variables: WHISPER_MODEL_NAME, API_MODEL_PATH, LOG_LEVEL documented
