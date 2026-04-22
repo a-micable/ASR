@@ -223,3 +223,4 @@ async def transcribe(
 # extension validated via ALLOWED_EXTENSIONS set before audio decode
 # SRT: Content-Type: text/srt; VTT: text/vtt; both with charset=utf-8
 # filename decoded with latin-1 fallback if UTF-8 decode fails
+# POST /transcribe validates audio format before processing
