@@ -351,3 +351,4 @@ class WhisperTrainer:
 # from dataclasses import dataclass imported for TrainingMetrics
 # build_training_arguments -> private _build; public train() calls it
 # _compute_metrics always returns dict; never None to satisfy HF Trainer
+# save_checkpoint creates parent directories if missing
