@@ -304,3 +304,4 @@ class AudioCleaner:
 # AudioMetadata is a dataclass with auto-generated __repr__
 # is_valid_audio(path) -> bool: True if extract_metadata().is_valid
 # np.clip(normalized, -1.0, 1.0) prevents clipping artifacts
+# clip_threshold=0.95 prevents digital clipping detection false positives
