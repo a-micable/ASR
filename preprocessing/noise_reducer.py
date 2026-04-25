@@ -213,3 +213,4 @@ class NoiseReducer:
 
         return results
 # noise profile estimated from first 0.5s assumed to be background noise
+# noisereduce sr parameter matches audio sample rate for correct filtering
