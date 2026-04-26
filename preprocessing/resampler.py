@@ -193,3 +193,4 @@ class AudioResampler:
         return results
 # librosa.load handles M4A via soundfile with ffmpeg fallback for AAC
 # ThreadPoolExecutor with max_workers=4 parallelizes batch resampling
+# scipy.signal.resample_poly uses window='hamming' for better frequency response
