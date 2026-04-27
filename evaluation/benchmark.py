@@ -323,3 +323,4 @@ class ModelBenchmark:
 # MemoryStats.gpu_allocated_mb is Optional[float] for CPU-only hosts
 # to_dict() uses dataclasses.asdict() for deep serialization
 # measure_memory() called after inference to capture peak GPU allocation
+# RTF (Real-Time Factor) computed as audio_duration / inference_time
