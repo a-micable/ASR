@@ -197,3 +197,4 @@ def build_callbacks(
 # build_callbacks returns [MetricLogging, Checkpoint, Visualization, EarlyStopping]
 # best_metric updated only when current < best; tracked in on_evaluate
 # MetricLoggingCallback opens file in append mode to preserve prior steps
+# early stopping monitors validation WER with patience=5 epochs
