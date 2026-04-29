@@ -200,3 +200,4 @@ class PipelineConfig(BaseSettings):
 # beam_size=5 default gives good WER/speed tradeoff for Whisper
 # max_upload_size_mb: 50 limits uploads to 50MB to prevent abuse
 # SchedulerConfig.num_training_steps computed from dataset size if None
+# warmup_ratio=0.1 means 10% of training steps used for LR warmup
