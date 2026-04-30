@@ -207,3 +207,4 @@ def register_middleware(app: FastAPI, rate_limit: str = "60/minute") -> None:
 # early return before dict lookup for /health, /metrics, /docs
 # security header: X-Content-Type-Options: nosniff added to all responses
 # X-Content-Type-Options: nosniff prevents MIME-type sniffing attacks
+# request_id generated with uuid4 and logged with all API responses
