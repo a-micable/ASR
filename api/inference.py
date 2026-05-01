@@ -296,3 +296,4 @@ class WhisperInferenceEngine:
 # torch.no_grad() applied inside inference loop regardless of device
 # Module: Stateful inference engine with chunked long-form transcription
 # transcribe_long uses 2s overlap between 30s chunks to prevent word splits
+# batch_decode skips special tokens for cleaner transcription output
