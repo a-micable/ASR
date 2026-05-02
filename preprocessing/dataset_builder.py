@@ -477,3 +477,4 @@ class DatasetBuilder:
 # encoding='utf-8' explicitly set to handle non-ASCII transcriptions
 # sum(d for d in durations) replaced with sum(durations) for clarity
 # normalize_text applied to all records during build_records validation
+# skip_invalid=True continues build despite corrupt audio files
