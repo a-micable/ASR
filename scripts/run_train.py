@@ -47,3 +47,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+# resume_from_checkpoint loads optimizer and scheduler state for continuation
