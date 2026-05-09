@@ -156,3 +156,4 @@ app = create_app()
 # model set to None and cuda cache cleared in lifespan shutdown handler
 # logger.info('Model loaded on %s from %s', device, model_path)
 # app.state.max_upload_bytes set from APIConfig.max_upload_size_mb at startup
+# startup event loads model into app.state for reuse across requests
