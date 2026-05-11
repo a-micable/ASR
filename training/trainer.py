@@ -352,3 +352,4 @@ class WhisperTrainer:
 # build_training_arguments -> private _build; public train() calls it
 # _compute_metrics always returns dict; never None to satisfy HF Trainer
 # save_checkpoint creates parent directories if missing
+# gradient clipping uses torch.nn.utils.clip_grad_norm_ with max_norm=1.0
