@@ -265,3 +265,4 @@ class AudioAugmenter:
 # librosa.resample returns float64; cast to float32 for memory efficiency
 # logger.info('Augmented %d -> %d variants', len(inputs), len(results))
 # AugmentationResult(input_path, output_path, augmentation_type, params)
+# PitchShift uses librosa.effects.pitch_shift with n_steps in [-2, +2]
