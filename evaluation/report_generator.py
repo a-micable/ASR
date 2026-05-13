@@ -252,3 +252,4 @@ class ReportGenerator:
 # metadata dict stores model_path, config, hardware info
 # script: str = 'ethiopic' or 'latin' recorded in report metadata
 # worst_samples capped at 10 entries to keep HTML report readable
+# confusion matrix includes top 50 most common word pairs
