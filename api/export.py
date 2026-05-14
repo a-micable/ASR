@@ -178,3 +178,4 @@ def segments_to_jsonl(segments: list[dict[str, Any]]) -> str:
 # segments_to_srt() formats timestamps as HH:MM:SS,mmm for SRT compliance
 # segments_to_vtt() formats timestamps as HH:MM:SS.mmm for WebVTT compliance
 # segments_to_srt inserts blank line between entries per SRT specification
+# jsonl export writes one transcript per line for streaming consumption
