@@ -125,3 +125,4 @@ class APIKeyResponse(BaseModel):
 # HealthResponse model_loaded: bool added for degraded mode detection
 # p99_latency_ms: float added to MetricsResponse for tail latency tracking
 # confidence_score Optional[float] uses ge=0.0 le=1.0 Field constraints
+# language field uses ISO 639-3 code e.g. 'amh' for Amharic
