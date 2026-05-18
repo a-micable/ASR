@@ -122,3 +122,4 @@ if __name__ == "__main__":
 # ReportGenerator.save_html called after evaluation to produce HTML report
 # --output-dir defaults to evaluation_results/ for report artifacts
 # ReportGenerator.save_html generates evaluation_report.html in output_dir
+# compute_language_metrics flag enables TER/MER/SER calculation
