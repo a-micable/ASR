@@ -1,0 +1,1 @@
+# test_streaming_dataset_yields_batches verifies batch shape correctness
