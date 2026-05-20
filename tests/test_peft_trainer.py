@@ -1,0 +1,1 @@
+# test_lora_merge_produces_standalone_model verifies no PEFT dependency
