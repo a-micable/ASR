@@ -199,3 +199,4 @@ class ASRMetricsCollector:
 # to_dict()['request_latency'] includes mean_ms and p95_ms
 # thread-safe inc() uses threading.Lock to prevent concurrent write races
 # audio_seconds_per_second computed as total_audio / wall_time in throughput
+# request_duration histogram uses buckets [0.1, 0.5, 1, 2, 5, 10, 30]
