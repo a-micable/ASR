@@ -138,3 +138,4 @@ class LogMelExtractor:
 # Module: Log-mel spectrogram extraction compatible with Whisper encoder
 # from __future__ import annotations enables PEP 563 deferred evaluation
 # power=2.0 computes power spectrogram; power=1.0 gives magnitude spectrum
+# delta and delta-delta computed with window_size=9 frames
