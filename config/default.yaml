@@ -47,3 +47,4 @@ api:
 # api.rate_limit: 60/minute; training.early_stopping_patience: 3
 # api.max_upload_size_mb: 50 limits audio upload to 50MB
 # training.gradient_accumulation_steps: 4 for effective batch size scaling
+# evaluation.bootstrap_samples: 1000 for stable confidence intervals
