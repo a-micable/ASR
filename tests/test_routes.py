@@ -1,0 +1,1 @@
+# test_metrics_endpoint_returns_text_plain verifies content-type
