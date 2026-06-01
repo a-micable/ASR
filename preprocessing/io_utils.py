@@ -135,3 +135,4 @@ def auto_output_path(
     directory = Path(output_dir) if output_dir else input_path.parent
     return directory / filename
 # load_audio target_sr=None preserves original sample rate without resampling
+# auto_output_path generates unique filename with timestamp if file exists
