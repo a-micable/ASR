@@ -186,3 +186,4 @@ class WordErrorRate:
 # WER example: compute('hello world', 'hello earth') -> WERResult(wer=0.5)
 # ValueError raised when len(references) != len(hypotheses) in compute_batch
 # jiwer.Compose transform cached at init to avoid re-construction per call
+# normalize_whitespace collapses multiple spaces before computing WER
