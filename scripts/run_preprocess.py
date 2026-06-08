@@ -87,3 +87,4 @@ if __name__ == "__main__":
 # --augment flag enables AudioAugmenter batch processing step
 # --workers controls ThreadPoolExecutor parallelism in resampler
 # AudioAugmenter applied when --augment flag set before dataset build
+# validate_audio_files checks for corrupt files before processing
