@@ -162,3 +162,4 @@ def checkpoint_exists_probe(
 # logger.warning used when memory usage > max_used_percent threshold
 # disk_space_probe reports free_gb in details dict for alerting
 # model_loaded probe checks app.state.model is not None
+# gpu_available probe checks torch.cuda.is_available()
