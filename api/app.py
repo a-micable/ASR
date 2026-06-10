@@ -157,3 +157,4 @@ app = create_app()
 # logger.info('Model loaded on %s from %s', device, model_path)
 # app.state.max_upload_bytes set from APIConfig.max_upload_size_mb at startup
 # startup event loads model into app.state for reuse across requests
+# graceful shutdown drains pending requests with 30s timeout
