@@ -228,32 +228,126 @@ Interactive docs: http://localhost:8000/docs
 
 ## Docker Deployment
 
-### Build
+The Dockerfile uses a **multi-stage build** with CUDA 12.1 runtime, Python 3.11 (via deadsnakes PPA), and runs as a non-root user.
+
+### Prerequisites
+
+- Docker 20.10+ with BuildKit enabled
+- NVIDIA Docker runtime (for GPU support)
+- Docker Compose v2+ (optional, for orchestration)
+
+### Quick Start with Docker Compose
+
+#### GPU Deployment (Default)
+
+```bash
+docker compose up -d
+```
+
+This starts the API on port **8000** with GPU access.
+
+#### CPU-Only Deployment
+
+```bash
+docker compose --profile cpu up -d
+```
+
+This starts the API on port **8001** without GPU requirements.
+
+### Manual Docker Build & Run
+
+#### Build
 
 ```bash
 docker build -t whisper-asr:latest .
 ```
 
-### Run (GPU)
+#### Run (GPU)
 
 ```bash
 docker run --gpus all \
   -p 8000:8000 \
   -v $(pwd)/checkpoints/best:/app/checkpoints/best:ro \
+  -v $(pwd)/logs:/app/logs \
   -e API_MODEL_PATH=checkpoints/best \
   -e WHISPER_MODEL_LANGUAGE=am \
+  -e API_WORKERS=4 \
+  -e LOG_LEVEL=info \
   whisper-asr:latest
 ```
 
-### Run (CPU)
+#### Run (CPU)
 
 ```bash
 docker run -p 8000:8000 \
   -v $(pwd)/checkpoints/best:/app/checkpoints/best:ro \
+  -v $(pwd)/logs:/app/logs \
+  -e API_MODEL_PATH=checkpoints/best \
   whisper-asr:latest
 ```
 
-Health check is configured in the Dockerfile (`GET /health` every 30s).
+### Docker Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `API_HOST` | `0.0.0.0` | API bind address |
+| `API_PORT` | `8000` | API listen port |
+| `API_MODEL_PATH` | `checkpoints/best` | Model checkpoint directory |
+| `API_WORKERS` | `1` | Uvicorn worker processes |
+| `LOG_LEVEL` | `INFO` | Logging level (DEBUG, INFO, WARNING, ERROR) |
+| `LOG_STRUCTURED` | `true` | JSON-formatted logs |
+| `WHISPER_MODEL_LANGUAGE` | `am` | Language code (am, om, ti) |
+| `WHISPER_MODEL_NAME` | `openai/whisper-small` | Base model identifier |
+
+### Health Check
+
+The container includes an automatic health check:
+
+```bash
+curl http://localhost:8000/health
+```
+
+- **Interval**: 30s
+- **Timeout**: 10s
+- **Start period**: 90s (allows model loading time)
+- **Retries**: 3
+
+### Docker Build Features
+
+✅ **Multi-stage build** — dependencies cached separately from application code  
+✅ **Python 3.11** — installed via deadsnakes PPA (Ubuntu 22.04 ships 3.10)  
+✅ **CUDA 12.1 runtime** — PyTorch wheels from cu121 index  
+✅ **Non-root user** — runs as `whisper` user (UID created in Dockerfile)  
+✅ **Optimized layers** — `requirements.txt` copied before source code for better caching  
+✅ **Health probe** — built-in curl-based health check  
+✅ **Volume mounts** — checkpoints and logs persisted on host  
+
+### Docker Image Size Optimization
+
+The production image excludes:
+- Test dependencies (`pytest`, `pytest-cov`)
+- Jupyter notebooks (`jupyter`, `ipykernel`)
+- Dev tools
+
+**Production deps**: `requirements.txt`  
+**Dev deps**: `requirements-dev.txt`
+
+### Testing the Dockerfile
+
+Run the validation suite:
+
+```bash
+./test_docker.sh
+```
+
+This verifies:
+- Dockerfile syntax
+- File structure
+- Requirements parsing
+- Docker Compose validity
+- Python module structure
+- Security best practices
+- Port and environment configuration
 
 ## Testing
 
