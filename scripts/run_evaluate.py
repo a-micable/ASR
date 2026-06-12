@@ -8,7 +8,6 @@ import json
 import logging
 from pathlib import Path
 
-import librosa
 import torch
 from datasets import load_from_disk
 from transformers import WhisperForConditionalGeneration, WhisperProcessor
@@ -17,6 +16,7 @@ from evaluation.benchmark import ModelBenchmark
 from evaluation.cer import CharacterErrorRate
 from evaluation.wer import WordErrorRate
 from logging_config import setup_logging
+from preprocessing.io_utils import load_audio
 from training.config import PipelineConfig
 
 logger = logging.getLogger(__name__)
@@ -54,7 +54,7 @@ def main() -> None:
     for item in split:
         audio_ref = item["audio"]
         if isinstance(audio_ref, str):
-            array, sr = librosa.load(audio_ref, sr=config.dataset.sample_rate, mono=True)
+            array, sr = load_audio(audio_ref, target_sr=config.dataset.sample_rate, mono=True)
         else:
             array = audio_ref["array"]
             sr = audio_ref["sampling_rate"]
@@ -99,8 +99,8 @@ def main() -> None:
             sample = split[0]
             audio_ref = sample["audio"]
             if isinstance(audio_ref, str):
-                array, sr = librosa.load(
-                    audio_ref, sr=config.dataset.sample_rate, mono=True
+                array, sr = load_audio(
+                    audio_ref, target_sr=config.dataset.sample_rate, mono=True
                 )
             else:
                 array = audio_ref["array"]

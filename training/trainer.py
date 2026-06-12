@@ -7,7 +7,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import librosa
 import numpy as np
 import torch
 from datasets import Dataset, DatasetDict, load_from_disk
@@ -23,6 +22,7 @@ from transformers import (
 from evaluation.cer import CharacterErrorRate
 from evaluation.wer import WordErrorRate
 from logging_config import get_logger
+from preprocessing.io_utils import load_audio
 from training.callbacks import build_callbacks
 from training.config import PipelineConfig
 
@@ -152,9 +152,9 @@ class WhisperTrainer:
         audio = batch["audio"]
 
         if isinstance(audio, str):
-            array, sampling_rate = librosa.load(
+            array, sampling_rate = load_audio(
                 audio,
-                sr=self.config.dataset.sample_rate,
+                target_sr=self.config.dataset.sample_rate,
                 mono=True,
             )
         elif isinstance(audio, dict):

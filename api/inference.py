@@ -4,16 +4,18 @@ from __future__ import annotations
 
 import io
 import logging
+import tempfile
 import time
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
-import librosa
 import numpy as np
 import torch
 from transformers import WhisperForConditionalGeneration, WhisperProcessor
 
 from api.schemas import TranscriptionSegment
+from preprocessing.io_utils import load_audio
 
 logger = logging.getLogger(__name__)
 
@@ -98,7 +100,12 @@ class WhisperInferenceEngine:
                 f"File size {len(data)} exceeds limit {max_bytes // (1024*1024)} MB"
             )
         try:
-            audio, _ = librosa.load(io.BytesIO(data), sr=TARGET_SAMPLE_RATE, mono=True)
+            # Write to temp file since load_audio expects path
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
+                tmp.write(data)
+                tmp_path = Path(tmp.name)
+            audio, _ = load_audio(tmp_path, target_sr=TARGET_SAMPLE_RATE, mono=True)
+            tmp_path.unlink()
         except Exception as exc:
             raise ValueError(f"Failed to decode audio: {exc}") from exc
 

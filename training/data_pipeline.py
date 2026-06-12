@@ -9,6 +9,8 @@ from typing import Any, Generator, Iterator
 
 import numpy as np
 
+from preprocessing.io_utils import load_audio
+
 logger = logging.getLogger(__name__)
 
 
@@ -66,9 +68,8 @@ class StreamingDataPipeline:
 
     def _load_audio(self, path: str) -> np.ndarray | None:
         """Load audio file, returning None on failure."""
-        import librosa
         try:
-            audio, _ = librosa.load(path, sr=self.sample_rate, mono=True)
+            audio, _ = load_audio(path, target_sr=self.sample_rate, mono=True)
             return audio
         except Exception as exc:
             logger.warning("Failed to load %s: %s", path, exc)

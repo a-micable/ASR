@@ -7,11 +7,12 @@ import logging
 import time
 from typing import Any
 
-import librosa
 import numpy as np
 import torch
 from fastapi import APIRouter, File, HTTPException, Request, UploadFile, status
 from pydantic import BaseModel, Field
+
+from preprocessing.io_utils import load_audio
 
 logger = logging.getLogger(__name__)
 
@@ -89,7 +90,14 @@ async def _load_audio_from_upload(
         )
 
     try:
-        audio, sr = librosa.load(io.BytesIO(contents), sr=TARGET_SAMPLE_RATE, mono=True)
+        # load_audio handles file-like objects by converting to temp path internally
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix=file_ext, delete=False) as tmp:
+            tmp.write(contents)
+            tmp_path = tmp.name
+        audio, sr = load_audio(tmp_path, target_sr=TARGET_SAMPLE_RATE, mono=True)
+        import os
+        os.unlink(tmp_path)
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
