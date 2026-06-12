@@ -44,7 +44,7 @@ WORKDIR /app
 FROM base AS dependencies
 
 # Copy only the pinned production requirements (no pytest/jupyter bloat)
-COPY requirements.txt .
+COPY requirements.txt ./
 
 # Install PyTorch with CUDA 12.1 wheels first
 RUN pip install --no-cache-dir \
@@ -61,14 +61,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 FROM dependencies AS application
 
 # Copy source modules (ordered: rarely-changing first for better cache hits)
-COPY config/           config/
-COPY logging_config.py .
-COPY preprocessing/    preprocessing/
-COPY training/         training/
-COPY evaluation/       evaluation/
-COPY monitoring/       monitoring/
-COPY api/              api/
-COPY scripts/          scripts/
+COPY config/ ./config/
+COPY logging_config.py ./
+COPY preprocessing/ ./preprocessing/
+COPY training/ ./training/
+COPY evaluation/ ./evaluation/
+COPY monitoring/ ./monitoring/
+COPY api/ ./api/
+COPY scripts/ ./scripts/
 
 # Create runtime directories, add a non-root user, and fix ownership
 RUN mkdir -p data/raw data/processed data/augmented checkpoints logs/tensorboard \
