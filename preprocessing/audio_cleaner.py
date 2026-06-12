@@ -280,7 +280,8 @@ class AudioCleaner:
 
         for input_path in input_paths:
             input_path = Path(input_path)
-            out_path = output_dir / f"{input_path.stem}_clean.wav"            try:
+            out_path = output_dir / f"{input_path.stem}_clean.wav"
+            try:
                 result = self.clean(input_path, out_path)
                 results.append(result)
             except ValueError as exc:
