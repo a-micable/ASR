@@ -46,14 +46,14 @@ FROM base AS dependencies
 # Copy only the pinned production requirements (no pytest/jupyter bloat)
 COPY requirements.txt /app/requirements.txt
 
-# Install PyTorch with CUDA 12.1 wheels first
-RUN pip install --no-cache-dir \
+# Install PyTorch with CUDA 12.1 wheels first (with timeout protection)
+RUN pip install --no-cache-dir --timeout=900 \
     torch==2.3.0 \
     torchaudio==2.3.0 \
     --index-url https://download.pytorch.org/whl/cu121
 
 # Now install everything else from requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --timeout=600 -r requirements.txt
 
 # ---------------------------------------------------------------------------
 # Stage 3: Application code

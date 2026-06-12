@@ -1,11 +1,9 @@
 # =============================================================================
 # Whisper Fine-Tuning Pipeline — pinned requirements
-# CPU build used in Docker (torch CPU wheels); GPU via torch+cu121 in Dockerfile
+# Torch installed separately in Dockerfile with CUDA support
 # =============================================================================
 
-# Core ML
-torch>=2.1.0,<2.4.0
-torchaudio>=2.1.0,<2.4.0
+# Core ML (torch/torchaudio installed separately in Dockerfile)
 transformers>=4.36.0,<4.42.0
 datasets>=2.16.0,<3.0.0
 accelerate>=0.25.0,<0.33.0
