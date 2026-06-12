@@ -49,12 +49,10 @@ COPY requirements.txt .
 # Install PyTorch with CUDA 12.1 wheels first (avoids double-install conflict
 # that occurs when requirements.txt pulls the CPU build afterward)
 RUN pip install \
-    torch>=2.1.0,<2.4.0 \
-    torchaudio>=2.1.0,<2.4.0 \
+    'torch>=2.1.0,<2.4.0' \
+    'torchaudio>=2.1.0,<2.4.0' \
     --index-url https://download.pytorch.org/whl/cu121 \
-    # Now install everything else; torch/torchaudio are already satisfied
-    && pip install -r requirements.txt --no-deps --ignore-installed torch torchaudio || \
-       pip install -r requirements.txt
+    && pip install -r requirements.txt
 
 # ---------------------------------------------------------------------------
 # Stage 3: Application code
